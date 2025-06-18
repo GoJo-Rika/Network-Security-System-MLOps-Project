@@ -4,4 +4,11 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "certifi>=2025.6.15",
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+    "pymongo>=4.13.2",
+    "python-dotenv>=1.1.0",
+    "setuptools>=80.9.0",
+]
