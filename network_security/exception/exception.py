@@ -3,7 +3,7 @@ import sys
 from network_security.logging import logger
 
 
-class NetworkSecurityError(Exception):
+class NetworkSecurityException(Exception):
     def __init__(self, error_message: str, error_details: sys) -> None:
         self.error_message = error_message
         _, _, exc_tb = error_details.exc_info()
