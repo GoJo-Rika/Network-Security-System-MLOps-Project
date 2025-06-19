@@ -8,7 +8,7 @@ dependencies = [
     "certifi>=2025.6.15",
     "numpy>=2.3.0",
     "pandas>=2.3.0",
-    "pymongo>=4.13.2",
+    "pymongo[srv]>=3.12.0",
     "python-dotenv>=1.1.0",
     "setuptools>=80.9.0",
 ]
