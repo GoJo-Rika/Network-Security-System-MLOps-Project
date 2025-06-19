@@ -17,3 +17,6 @@ wheels/
 
 # Log files
 logs/
+
+# Artifacts
+Artifacts/
