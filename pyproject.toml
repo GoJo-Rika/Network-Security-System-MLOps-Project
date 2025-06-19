@@ -6,8 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "certifi>=2025.6.15",
+    "dill>=0.4.0",
     "numpy>=2.3.0",
     "pandas>=2.3.0",
+    "pyaml>=25.5.0",
     "pymongo[srv]==3.12",
     "python-dotenv>=1.1.0",
     "scikit-learn>=1.7.0",
