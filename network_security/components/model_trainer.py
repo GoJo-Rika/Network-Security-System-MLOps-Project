@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 
+import dagshub
 import mlflow
 from sklearn.ensemble import (
     AdaBoostClassifier,
@@ -28,6 +29,12 @@ from network_security.utils.ml_utils.metric.classification_metric import (
 )
 from network_security.utils.ml_utils.model.estimator import NetworkModel
 
+dagshub.init(
+    repo_owner="GoJo-Rika",
+    repo_name="Network-Security-System-MLOps-Project",
+    mlflow=True,
+)
+
 
 class ModelTrainer:
     def __init__(
@@ -41,7 +48,7 @@ class ModelTrainer:
         except Exception as e:
             raise NetworkSecurityException(e, sys)
 
-    def track_mlflow(self, best_model, classificationmetric):
+    def track_mlflow(self, best_model: object, classificationmetric: object) -> None:
         with mlflow.start_run():
             f1_score = classificationmetric.f1_score
             precision_score = classificationmetric.precision_score
@@ -50,7 +57,7 @@ class ModelTrainer:
             mlflow.log_metric("f1_score", f1_score)
             mlflow.log_metric("precision", precision_score)
             mlflow.log_metric("recall_score", recall_score)
-            mlflow.sklearn.log_model(best_model, "model")
+            # mlflow.sklearn.log_model(best_model, "model")
 
     def train_model(
         self,
