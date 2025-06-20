@@ -66,3 +66,8 @@ MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
 MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_OVER_FIITING_UNDER_FITTING_THRESHOLD: float = 0.05
+
+
+## The bucket name should be unique globally and cannot be changed
+## Make a s3 bucket and change it below.
+TRAINING_BUCKET_NAME = "demo-networksecurity"

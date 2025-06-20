@@ -6,7 +6,6 @@ from urllib.parse import quote_plus
 
 import certifi
 import pandas as pd
-import pymongo
 from dotenv import load_dotenv
 from fastapi import FastAPI, File, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
@@ -32,17 +31,12 @@ ca = certifi.where()
 
 
 load_dotenv()
-username = os.getenv("MONGO_DB_USERNAME")
-password = os.getenv("MONGO_DB_PASSWORD")
-
-username = quote_plus(username)
-password = quote_plus(password)
+username = quote_plus(os.getenv("MONGO_DB_USERNAME"))
+password = quote_plus(os.getenv("MONGO_DB_PASSWORD"))
 
 mongo_db_url: str = f"mongodb+srv://{username}:{password}@cluster0.l5ee6dv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-client = MongoClient(mongo_db_url, server_api=ServerApi("1"))
-
-client = pymongo.MongoClient(mongo_db_url, tlsCAFile=ca)
+client = MongoClient(mongo_db_url, server_api=ServerApi("1"), tlsCAFile=ca)
 
 
 database = client[DATA_INGESTION_DATABASE_NAME]
