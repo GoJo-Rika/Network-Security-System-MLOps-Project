@@ -7,6 +7,10 @@ on:
     paths-ignore:
       - 'README.md'
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   integration:
     name: Continuous Integration
@@ -64,6 +68,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      
+      - name: Free up disk space
+        run: |
+          echo "Disk space before cleanup:"
+          df -h
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          echo "Disk space after cleanup:"
+          df -h
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
